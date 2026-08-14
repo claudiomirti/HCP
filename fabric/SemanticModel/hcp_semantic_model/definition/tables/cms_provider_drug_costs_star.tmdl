@@ -1,0 +1,320 @@
+table cms_provider_drug_costs_star
+	lineageTag: 54c544ba-70f7-4708-a273-a6817e79d284
+	sourceLineageTag: [dbo].[cms_provider_drug_costs_star]
+
+	measure 'Row Count' = COUNTROWS('cms_provider_drug_costs_star')
+		formatString: 0
+		lineageTag: d25cb678-939d-4fa5-9b38-d5a22db82560
+
+		changedProperty = Name
+
+	measure 'Total Claims' = SUM(cms_provider_drug_costs_star[Tot_Clms])
+		formatString: 0
+		lineageTag: 026efb77-f285-4cd0-9b14-b7132609066f
+
+		changedProperty = Name
+
+	measure 'Total Beneficiaries' = SUM(cms_provider_drug_costs_star[Tot_Benes])
+		formatString: 0
+		lineageTag: 21fa51f1-378c-4cf3-8f38-8e9dc99058bd
+
+		changedProperty = Name
+
+	measure 'Total 30 Day Fills' = SUM(cms_provider_drug_costs_star[Tot_30day_Fills])
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 165dcbef-6ecc-4bd4-8337-373718c05ef4
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Total Days Supply' = SUM(cms_provider_drug_costs_star[Tot_Day_Suply])
+		formatString: 0
+		lineageTag: 2f8f2030-66bc-4a07-8a88-b5f24009fe4f
+
+		changedProperty = Name
+
+	measure 'Total Drug Cost' = SUM(cms_provider_drug_costs_star[Tot_Drug_Cst])
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: b1d812a0-70cb-4f09-b3c4-803b315dcb09
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Cost per Claim' = DIVIDE([Total Drug Cost],[Total Claims])
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: f078b238-6c1b-44aa-9d7f-bff4ac08272a
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Cost per Day' = DIVIDE([Total Drug Cost],[Total Days Supply])
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: b75d06c3-d337-46d9-8e8d-94fe4a8a580a
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Days per Claim' = DIVIDE([Total Days Supply],[Total Claims])
+		lineageTag: d3d55680-9692-40a8-b467-2c98e1c8ab07
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column '65 or Older Beneficiaries Suppression Flag'
+		dataType: string
+		isHidden
+		sourceProviderType: varchar(8000)
+		lineageTag: 3139968c-ada9-4be3-ac3f-573ba1da8fbc
+		sourceLineageTag: GE65_Bene_Sprsn_Flag
+		summarizeBy: none
+		sourceColumn: GE65_Bene_Sprsn_Flag
+
+		changedProperty = Name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column '65 or Older Suppression Flag'
+		dataType: string
+		isHidden
+		sourceProviderType: varchar(8000)
+		lineageTag: 48ec0992-7aee-4dbb-a9c2-13cf5851b8ad
+		sourceLineageTag: GE65_Sprsn_Flag
+		summarizeBy: none
+		sourceColumn: GE65_Sprsn_Flag
+
+		changedProperty = IsHidden
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column '65 or Older Total 30 Day Fills'
+		dataType: decimal
+		isHidden
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		sourceProviderType: decimal(10, 2)
+		lineageTag: 3c806d97-e797-41f9-85c6-931e226acd7e
+		sourceLineageTag: GE65_Tot_30day_Fills
+		summarizeBy: sum
+		sourceColumn: GE65_Tot_30day_Fills
+
+		changedProperty = IsHidden
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column '65 or Older Total Beneficiaries'
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: cbc9eac4-22f5-4294-865b-f076006a848d
+		sourceLineageTag: GE65_Tot_Benes
+		summarizeBy: sum
+		sourceColumn: GE65_Tot_Benes
+
+		changedProperty = IsHidden
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column '65 or Older Total Claims'
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: a18b4dc8-84df-4def-8081-64fdb8fb4ae9
+		sourceLineageTag: GE65_Tot_Clms
+		summarizeBy: sum
+		sourceColumn: GE65_Tot_Clms
+
+		changedProperty = Name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column '65 or Older Total Days Supply'
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: fc544b14-7447-47a1-a414-08440addfd2e
+		sourceLineageTag: GE65_Tot_Day_Suply
+		summarizeBy: sum
+		sourceColumn: GE65_Tot_Day_Suply
+
+		changedProperty = Name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column '65 or Older Total Drug Cost'
+		dataType: decimal
+		isHidden
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		sourceProviderType: decimal(10, 2)
+		lineageTag: 9a020e58-58f7-45ab-853b-7896ed8ea6b1
+		sourceLineageTag: GE65_Tot_Drug_Cst
+		summarizeBy: sum
+		sourceColumn: GE65_Tot_Drug_Cst
+
+		changedProperty = Name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column Tot_30day_Fills
+		dataType: decimal
+		isHidden
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		sourceProviderType: decimal(10, 2)
+		lineageTag: c350b339-c7f3-4a91-b22d-70c4e98a4831
+		sourceLineageTag: Tot_30day_Fills
+		summarizeBy: sum
+		sourceColumn: Tot_30day_Fills
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column Tot_Benes
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 0d16773b-da6c-44b0-901d-a9b0c42a6965
+		sourceLineageTag: Tot_Benes
+		summarizeBy: sum
+		sourceColumn: Tot_Benes
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tot_Clms
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: a0b23eb8-87b7-4cc3-ac44-76d3ac47f5c7
+		sourceLineageTag: Tot_Clms
+		summarizeBy: sum
+		sourceColumn: Tot_Clms
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tot_Day_Suply
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 4fe1afe5-7535-458f-9d85-d42ec83b80dc
+		sourceLineageTag: Tot_Day_Suply
+		summarizeBy: sum
+		sourceColumn: Tot_Day_Suply
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tot_Drug_Cst
+		dataType: decimal
+		isHidden
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		sourceProviderType: decimal(10, 2)
+		lineageTag: 46e8093b-0700-4cb4-aedf-ea5c98dc845d
+		sourceLineageTag: Tot_Drug_Cst
+		summarizeBy: sum
+		sourceColumn: Tot_Drug_Cst
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column Year
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 4b7f6380-16b4-446a-90c8-3054b97190ac
+		sourceLineageTag: Year
+		summarizeBy: none
+		sourceColumn: Year
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column drug_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 51ba578d-4d79-40c6-82e9-89eaa5a69548
+		sourceLineageTag: drug_key
+		summarizeBy: none
+		sourceColumn: drug_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column geo_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 235a111e-47ae-44cb-9763-7ff5f8a41602
+		sourceLineageTag: geo_key
+		summarizeBy: none
+		sourceColumn: geo_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column provider_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: f58a2193-8493-4554-8053-71ea9887fd4c
+		sourceLineageTag: provider_key
+		summarizeBy: none
+		sourceColumn: provider_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition cms_provider_drug_costs_star = entity
+		mode: directLake
+		source
+			entityName: cms_provider_drug_costs_star
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

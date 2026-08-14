@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/relationshipType/1.0.0/schema.json",
+  "namespace": "usertypes",
+  "id": "2953345259866808097",
+  "name": "cms_provider_drug_costs_star_has_cms_provider_dim_provider",
+  "namespaceType": "Imported",
+  "source": {
+    "entityTypeId": "257698971452910"
+  },
+  "target": {
+    "entityTypeId": "214130451543857"
+  }
+}

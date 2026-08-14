@@ -1,0 +1,24 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/entityType/1.0.0/schema.json",
+  "id": "80980642284817",
+  "namespace": "usertypes",
+  "baseEntityTypeId": null,
+  "name": "cms_provider_dim_year",
+  "entityIdParts": [
+    "2952986076793792738"
+  ],
+  "displayNamePropertyId": null,
+  "namespaceType": "Imported",
+  "visibility": "Visible",
+  "properties": [
+    {
+      "id": "2952986076793792738",
+      "name": "Year",
+      "redefines": null,
+      "baseTypeNamespaceType": null,
+      "valueType": "BigInt"
+    }
+  ],
+  "timeseriesProperties": [],
+  "untypedProperties": []
+}

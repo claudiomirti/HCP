@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+.vite/
+*.tsbuildinfo
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Local env files (matches .env.local, .env.*.local)
+*.local
+.env
+
+# Rayfin - auto-generated or secret-bearing files
+app/rayfin/.env*
+app/rayfin/.deployments.json
+app/rayfin/.temp/
+
+# Test coverage
+coverage/
+
+# Editor / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.suo
+*.sln
+*.sw?

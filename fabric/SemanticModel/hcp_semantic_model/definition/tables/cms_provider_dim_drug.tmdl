@@ -1,0 +1,83 @@
+table cms_provider_dim_drug
+	lineageTag: abd4ffc3-c4b1-48dd-9bd4-f50f2672e98b
+	sourceLineageTag: [dbo].[cms_provider_dim_drug]
+
+	column 'Brand Name'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 3794b132-270a-4026-bc14-2c83d53d3928
+		sourceLineageTag: Brnd_Name
+		summarizeBy: none
+		sourceColumn: Brnd_Name
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Generic Name'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 4c7bc9f5-ee98-45d4-9d84-88e9ffddcf76
+		sourceLineageTag: Gnrc_Name
+		summarizeBy: none
+		sourceColumn: Gnrc_Name
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Max_Year_drug
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: d07af055-f996-4c72-ba28-ce45f851f21d
+		sourceLineageTag: Max_Year
+		summarizeBy: none
+		sourceColumn: Max_Year
+
+		changedProperty = Name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Min_Year_drug
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 46ea6b66-ff5b-46af-9d39-2d982d63eafa
+		sourceLineageTag: Min_Year
+		summarizeBy: none
+		sourceColumn: Min_Year
+
+		changedProperty = Name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column drug_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: d31085bf-9c24-4572-be14-9844d0f499ea
+		sourceLineageTag: drug_key
+		summarizeBy: none
+		sourceColumn: drug_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition cms_provider_dim_drug = entity
+		mode: directLake
+		source
+			entityName: cms_provider_dim_drug
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

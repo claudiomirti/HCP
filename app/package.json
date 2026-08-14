@@ -1,0 +1,31 @@
+{
+  "name": "hcp-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@azure/msal-browser": "^5.14.0",
+    "@azure/msal-react": "^5.4.5",
+    "@microsoft/rayfin-client": "^1.33.2",
+    "@microsoft/rayfin-core": "^1.33.2",
+    "@microsoft/rayfin-data": "^1.33.2",
+    "powerbi-client": "^2.23.10",
+    "powerbi-client-react": "^2.0.2",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@microsoft/rayfin-cli": "^1.23.0",
+    "@vitejs/plugin-react": "^6.0.2",
+    "vite": "^8.0.16"
+  }
+}

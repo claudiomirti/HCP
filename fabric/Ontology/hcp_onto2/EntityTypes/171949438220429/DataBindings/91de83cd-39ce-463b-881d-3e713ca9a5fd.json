@@ -1,0 +1,24 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/dataBinding/1.0.0/schema.json",
+  "id": "91de83cd-39ce-463b-881d-3e713ca9a5fd",
+  "dataBindingConfiguration": {
+    "dataBindingType": "NonTimeSeries",
+    "propertyBindings": [
+      {
+        "sourceColumnName": "Brand Name",
+        "targetPropertyId": "2952986605004060016"
+      },
+      {
+        "sourceColumnName": "Generic Name",
+        "targetPropertyId": "2952986645246014947"
+      }
+    ],
+    "sourceTableProperties": {
+      "sourceType": "LakehouseTable",
+      "workspaceId": "<<WORKSPACE_ID>>",
+      "itemId": "<<CMS_LAKEHOUSE_ID>>",
+      "sourceTableName": "cms_provider_dim_drug",
+      "sourceSchema": null
+    }
+  }
+}

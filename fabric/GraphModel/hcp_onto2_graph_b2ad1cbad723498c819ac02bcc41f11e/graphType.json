@@ -1,0 +1,21 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/graphInstance/definition/graphType/1.0.0/schema.json",
+  "nodeTypes": [
+    {
+      "primaryKeyProperties": [
+        "Year"
+      ],
+      "alias": "80980642284817",
+      "labels": [
+        "cms_provider_dim_year"
+      ],
+      "properties": [
+        {
+          "name": "Year",
+          "type": "INT"
+        }
+      ]
+    }
+  ],
+  "edgeTypes": []
+}

@@ -1,0 +1,1 @@
+{"$schema":"https://developer.microsoft.com/json-schemas/fabric/item/graphInstance/definition/dataSources/1.0.0/schema.json","dataSources":[{"name":"<<CMS_LAKEHOUSE_ID>>_cms_provider_dim_year","type":"DeltaTable","properties":{"path":"abfss://<<WORKSPACE_ID>>@onelake.pbidedicated.windows.net/<<CMS_LAKEHOUSE_ID>>/Tables/cms_provider_dim_year"}}]}

@@ -1,0 +1,166 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/graphqlApi/definition/1.0.0/schema.json",
+  "datasources": [
+    {
+      "objects": [
+        {
+          "actions": {
+            "Query": "Enabled",
+            "Query_by_pk": "Enabled",
+            "Create": "Enabled",
+            "Update": "Enabled",
+            "Delete": "Enabled"
+          },
+          "fieldMappings": {
+            "Brnd_Name": "Brnd_Name",
+            "drug_key": "drug_key",
+            "Gnrc_Name": "Gnrc_Name",
+            "Max_Year": "Max_Year",
+            "Min_Year": "Min_Year"
+          },
+          "graphqlType": "cms_provider_dim_drug",
+          "relationships": [],
+          "sourceObject": "dbo.cms_provider_dim_drug",
+          "sourceObjectType": "Table"
+        },
+        {
+          "actions": {
+            "Query": "Enabled",
+            "Query_by_pk": "Enabled",
+            "Create": "Enabled",
+            "Update": "Enabled",
+            "Delete": "Enabled"
+          },
+          "fieldMappings": {
+            "geo_key": "geo_key",
+            "Max_Year": "Max_Year",
+            "Min_Year": "Min_Year",
+            "Prscrbr_City": "Prscrbr_City",
+            "Prscrbr_City_State": "Prscrbr_City_State",
+            "Prscrbr_State_Abrvtn": "Prscrbr_State_Abrvtn",
+            "Prscrbr_State_FIPS": "Prscrbr_State_FIPS"
+          },
+          "graphqlType": "cms_provider_dim_geography",
+          "relationships": [],
+          "sourceObject": "dbo.cms_provider_dim_geography",
+          "sourceObjectType": "Table"
+        },
+        {
+          "actions": {
+            "Query": "Enabled",
+            "Query_by_pk": "Enabled",
+            "Create": "Enabled",
+            "Update": "Enabled",
+            "Delete": "Enabled"
+          },
+          "fieldMappings": {
+            "Max_Year": "Max_Year",
+            "Min_Year": "Min_Year",
+            "provider_key": "provider_key",
+            "Prscrbr_First_Name": "Prscrbr_First_Name",
+            "Prscrbr_Full_Name": "Prscrbr_Full_Name",
+            "Prscrbr_Last_Org_Name": "Prscrbr_Last_Org_Name",
+            "Prscrbr_NPI": "Prscrbr_NPI",
+            "Prscrbr_Type": "Prscrbr_Type",
+            "Prscrbr_Type_Src": "Prscrbr_Type_Src"
+          },
+          "graphqlType": "cms_provider_dim_provider",
+          "relationships": [],
+          "sourceObject": "dbo.cms_provider_dim_provider",
+          "sourceObjectType": "Table"
+        },
+        {
+          "actions": {
+            "Query": "Enabled",
+            "Query_by_pk": "Enabled",
+            "Create": "Enabled",
+            "Update": "Enabled",
+            "Delete": "Enabled"
+          },
+          "fieldMappings": {
+            "Year": "Year",
+            "Year_Date_Key": "Year_Date_Key"
+          },
+          "graphqlType": "cms_provider_dim_year",
+          "relationships": [],
+          "sourceObject": "dbo.cms_provider_dim_year",
+          "sourceObjectType": "Table"
+        },
+        {
+          "actions": {
+            "Query": "Enabled",
+            "Query_by_pk": "Enabled",
+            "Create": "Enabled",
+            "Update": "Enabled",
+            "Delete": "Enabled"
+          },
+          "fieldMappings": {
+            "Brnd_Name": "Brnd_Name",
+            "GE65_Bene_Sprsn_Flag": "GE65_Bene_Sprsn_Flag",
+            "GE65_Sprsn_Flag": "GE65_Sprsn_Flag",
+            "GE65_Tot_30day_Fills": "GE65_Tot_30day_Fills",
+            "GE65_Tot_Benes": "GE65_Tot_Benes",
+            "GE65_Tot_Clms": "GE65_Tot_Clms",
+            "GE65_Tot_Day_Suply": "GE65_Tot_Day_Suply",
+            "GE65_Tot_Drug_Cst": "GE65_Tot_Drug_Cst",
+            "Gnrc_Name": "Gnrc_Name",
+            "Prscrbr_City": "Prscrbr_City",
+            "Prscrbr_City_State": "Prscrbr_City_State",
+            "Prscrbr_First_Name": "Prscrbr_First_Name",
+            "Prscrbr_Full_Name": "Prscrbr_Full_Name",
+            "Prscrbr_Last_Org_Name": "Prscrbr_Last_Org_Name",
+            "Prscrbr_NPI": "Prscrbr_NPI",
+            "Prscrbr_State_Abrvtn": "Prscrbr_State_Abrvtn",
+            "Prscrbr_State_FIPS": "Prscrbr_State_FIPS",
+            "Prscrbr_Type": "Prscrbr_Type",
+            "Prscrbr_Type_Src": "Prscrbr_Type_Src",
+            "Tot_30day_Fills": "Tot_30day_Fills",
+            "Tot_Benes": "Tot_Benes",
+            "Tot_Clms": "Tot_Clms",
+            "Tot_Day_Suply": "Tot_Day_Suply",
+            "Tot_Drug_Cst": "Tot_Drug_Cst",
+            "Year": "Year"
+          },
+          "graphqlType": "cms_provider_drug_costs",
+          "relationships": [],
+          "sourceObject": "dbo.cms_provider_drug_costs",
+          "sourceObjectType": "Table"
+        },
+        {
+          "actions": {
+            "Query": "Enabled",
+            "Query_by_pk": "Enabled",
+            "Create": "Enabled",
+            "Update": "Enabled",
+            "Delete": "Enabled"
+          },
+          "fieldMappings": {
+            "drug_key": "drug_key",
+            "GE65_Bene_Sprsn_Flag": "GE65_Bene_Sprsn_Flag",
+            "GE65_Sprsn_Flag": "GE65_Sprsn_Flag",
+            "GE65_Tot_30day_Fills": "GE65_Tot_30day_Fills",
+            "GE65_Tot_Benes": "GE65_Tot_Benes",
+            "GE65_Tot_Clms": "GE65_Tot_Clms",
+            "GE65_Tot_Day_Suply": "GE65_Tot_Day_Suply",
+            "GE65_Tot_Drug_Cst": "GE65_Tot_Drug_Cst",
+            "geo_key": "geo_key",
+            "provider_key": "provider_key",
+            "Tot_30day_Fills": "Tot_30day_Fills",
+            "Tot_Benes": "Tot_Benes",
+            "Tot_Clms": "Tot_Clms",
+            "Tot_Day_Suply": "Tot_Day_Suply",
+            "Tot_Drug_Cst": "Tot_Drug_Cst",
+            "Year": "Year"
+          },
+          "graphqlType": "cms_provider_drug_costs_star",
+          "relationships": [],
+          "sourceObject": "dbo.cms_provider_drug_costs_star",
+          "sourceObjectType": "Table"
+        }
+      ],
+      "sourceItemId": "<<CMS_LAKEHOUSE_SQL_ENDPOINT_ID>>",
+      "sourceType": "SqlAnalyticsEndpoint",
+      "sourceWorkspaceId": "<<WORKSPACE_ID>>"
+    }
+  ]
+}

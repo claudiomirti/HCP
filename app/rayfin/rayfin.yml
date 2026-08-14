@@ -1,0 +1,31 @@
+id: hcp-app
+name: hcp-app
+version: 1.0.11
+services:
+  auth:
+    enabled: true
+    customClaims:
+      app_version: 1.0.0
+    scopes:
+      - read:data
+      - write:data
+    password:
+      enabled: false
+    # Add the URL printed by `rayfin up` here, then re-run `rayfin up`.
+    # e.g. https://<name>-<region>.webapp.fabricapps.net
+    allowedRedirectUris:
+      - http://localhost:5173
+    fabric:
+      enabled: true
+  data:
+    enabled: true
+    dialect: mssql
+  staticHosting:
+    enabled: true
+    folder: dist
+    buildCommand: npm run build
+    indexDocument: index.html
+  storage:
+    enabled: false
+  functions:
+    enabled: false

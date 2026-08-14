@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/dataBinding/1.0.0/schema.json",
+  "id": "35bc0113-6c2d-4783-8320-0149ca9d13a1",
+  "dataBindingConfiguration": {
+    "dataBindingType": "NonTimeSeries",
+    "propertyBindings": [
+      {
+        "sourceColumnName": "Year",
+        "targetPropertyId": "2952986076793792738"
+      }
+    ],
+    "sourceTableProperties": {
+      "sourceType": "LakehouseTable",
+      "workspaceId": "<<WORKSPACE_ID>>",
+      "itemId": "<<CMS_LAKEHOUSE_ID>>",
+      "sourceTableName": "cms_provider_dim_year",
+      "sourceSchema": null
+    }
+  }
+}

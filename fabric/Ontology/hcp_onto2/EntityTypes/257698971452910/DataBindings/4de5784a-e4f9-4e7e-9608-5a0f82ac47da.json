@@ -1,0 +1,15 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/dataBinding/1.0.0/schema.json",
+  "id": "4de5784a-e4f9-4e7e-9608-5a0f82ac47da",
+  "dataBindingConfiguration": {
+    "dataBindingType": "NonTimeSeries",
+    "propertyBindings": [],
+    "sourceTableProperties": {
+      "sourceType": "LakehouseTable",
+      "workspaceId": "<<WORKSPACE_ID>>",
+      "itemId": "<<CMS_LAKEHOUSE_ID>>",
+      "sourceTableName": "cms_provider_drug_costs_star",
+      "sourceSchema": null
+    }
+  }
+}

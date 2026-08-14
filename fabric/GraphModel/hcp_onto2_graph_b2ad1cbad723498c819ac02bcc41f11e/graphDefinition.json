@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/graphInstance/definition/graphDefinition/1.0.0/schema.json",
+  "nodeTables": [
+    {
+      "nodeTypeAlias": "80980642284817",
+      "id": "eab643df-509b-44e1-ab13-1669838c913b",
+      "dataSourceName": "<<CMS_LAKEHOUSE_ID>>_cms_provider_dim_year",
+      "propertyMappings": [
+        {
+          "propertyName": "Year",
+          "sourceColumn": "Year"
+        }
+      ]
+    }
+  ],
+  "edgeTables": []
+}

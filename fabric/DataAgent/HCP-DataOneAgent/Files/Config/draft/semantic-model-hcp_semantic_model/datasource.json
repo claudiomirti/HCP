@@ -1,0 +1,221 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/dataAgent/definition/dataSource/1.0.0/schema.json",
+  "artifactId": "<<SEMANTIC_MODEL_ID>>",
+  "workspaceId": "<<WORKSPACE_ID>>",
+  "dataSourceInstructions": null,
+  "displayName": "hcp_semantic_model",
+  "type": "semantic_model",
+  "userDescription": null,
+  "metadata": {
+    "csdl_relationships": "[{\"FromTable\":\"cms_provider_drug_costs_star\",\"FromColumn\":\"Year\",\"ToTable\":\"cms_provider_dim_year\",\"ToColumn\":\"Year\",\"IsActive\":true,\"IsBidirectional\":false,\"Cardinality\":\"ManyToOne\"},{\"FromTable\":\"cms_provider_drug_costs_star\",\"FromColumn\":\"drug_key\",\"ToTable\":\"cms_provider_dim_drug\",\"ToColumn\":\"drug_key\",\"IsActive\":true,\"IsBidirectional\":false,\"Cardinality\":\"ManyToOne\"},{\"FromTable\":\"cms_provider_drug_costs_star\",\"FromColumn\":\"geo_key\",\"ToTable\":\"cms_provider_dim_geography\",\"ToColumn\":\"geo_key\",\"IsActive\":true,\"IsBidirectional\":false,\"Cardinality\":\"ManyToOne\"},{\"FromTable\":\"cms_provider_drug_costs_star\",\"FromColumn\":\"provider_key\",\"ToTable\":\"cms_provider_dim_provider\",\"ToColumn\":\"provider_key\",\"IsActive\":true,\"IsBidirectional\":false,\"Cardinality\":\"ManyToOne\"}]"
+  },
+  "elements": [
+    {
+      "id": "abd4ffc3-c4b1-48dd-9bd4-f50f2672e98b",
+      "is_selected": true,
+      "display_name": "cms_provider_dim_drug",
+      "type": "semantic_model.table",
+      "description": null,
+      "children": [
+        {
+          "id": "3794b132-270a-4026-bc14-2c83d53d3928",
+          "is_selected": true,
+          "display_name": "Brand Name",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "4c7bc9f5-ee98-45d4-9d84-88e9ffddcf76",
+          "is_selected": true,
+          "display_name": "Generic Name",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "6f595bc4-cdee-46b9-b5b1-7d564e6c9930",
+      "is_selected": true,
+      "display_name": "cms_provider_dim_geography",
+      "type": "semantic_model.table",
+      "description": null,
+      "children": [
+        {
+          "id": "a3e2c443-dbb6-4a4e-91b6-1d8e484191cf",
+          "is_selected": true,
+          "display_name": "Prescriber City",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "71277780-5ffa-467f-a72f-dd9aa3a1f840",
+          "is_selected": true,
+          "display_name": "Prescriber City State",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "aade0d6c-64d3-4b51-81cc-04623fc7715b",
+          "is_selected": true,
+          "display_name": "Prescriber State",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "7762d138-cd13-4fef-93b2-7e5ec5d3a762",
+      "is_selected": true,
+      "display_name": "cms_provider_dim_provider",
+      "type": "semantic_model.table",
+      "description": null,
+      "children": [
+        {
+          "id": "2e457ffb-3d1e-47ac-bf6e-eeb00b44eb6c",
+          "is_selected": true,
+          "display_name": "Prescriber Full Name",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "36b41415-1314-4079-a9de-f5e1710720d6",
+          "is_selected": true,
+          "display_name": "Prescriber NPI",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "61ff3a14-3dee-412a-9e7e-6935de80bbb0",
+          "is_selected": true,
+          "display_name": "Prescriber Type ",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "e88782b4-9e08-4253-9f28-91d6ee7696cc",
+      "is_selected": true,
+      "display_name": "cms_provider_dim_year",
+      "type": "semantic_model.table",
+      "description": null,
+      "children": [
+        {
+          "id": "ffd2875a-62b9-4e17-aec0-d5596d98ac11",
+          "is_selected": true,
+          "display_name": "Year",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": null,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "54c544ba-70f7-4708-a273-a6817e79d284",
+      "is_selected": true,
+      "display_name": "cms_provider_drug_costs_star",
+      "type": "semantic_model.table",
+      "description": null,
+      "children": [
+        {
+          "id": "f078b238-6c1b-44aa-9d7f-bff4ac08272a",
+          "is_selected": true,
+          "display_name": "Cost per Claim",
+          "type": "semantic_model.measure",
+          "data_type": "Decimal",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "b75d06c3-d337-46d9-8e8d-94fe4a8a580a",
+          "is_selected": true,
+          "display_name": "Cost per Day",
+          "type": "semantic_model.measure",
+          "data_type": "Decimal",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "d3d55680-9692-40a8-b467-2c98e1c8ab07",
+          "is_selected": true,
+          "display_name": "Days per Claim",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "d25cb678-939d-4fa5-9b38-d5a22db82560",
+          "is_selected": true,
+          "display_name": "Row Count",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "165dcbef-6ecc-4bd4-8337-373718c05ef4",
+          "is_selected": true,
+          "display_name": "Total 30 Day Fills",
+          "type": "semantic_model.measure",
+          "data_type": "Decimal",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "21fa51f1-378c-4cf3-8f38-8e9dc99058bd",
+          "is_selected": true,
+          "display_name": "Total Beneficiaries",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "026efb77-f285-4cd0-9b14-b7132609066f",
+          "is_selected": true,
+          "display_name": "Total Claims",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "2f8f2030-66bc-4a07-8a88-b5f24009fe4f",
+          "is_selected": true,
+          "display_name": "Total Days Supply",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "b1d812a0-70cb-4f09-b3c4-803b315dcb09",
+          "is_selected": true,
+          "display_name": "Total Drug Cost",
+          "type": "semantic_model.measure",
+          "data_type": "Decimal",
+          "description": null,
+          "children": []
+        }
+      ]
+    }
+  ]
+}

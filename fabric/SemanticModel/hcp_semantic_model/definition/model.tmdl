@@ -1,0 +1,25 @@
+model Model
+	culture: en-US
+	collation: Latin1_General_100_BIN2_UTF8
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBIDesktopVersion = 2.146.7727.7 (Main)+bc5f9142edb5be5beb4b90d87b320b00b8f2d382
+
+annotation PBI_QueryOrder = ["DatabaseQuery"]
+
+annotation PBI_ProTooling = ["WebModelingEdit"]
+
+ref table cms_provider_dim_year
+ref table cms_provider_dim_geography
+ref table cms_provider_dim_drug
+ref table cms_provider_dim_provider
+ref table cms_provider_drug_costs_star
+
+ref cultureInfo en-US
+

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/dataBinding/1.0.0/schema.json",
+  "id": "7b51305d-3af3-45d3-961d-4ee6d6ff8506",
+  "dataBindingConfiguration": {
+    "dataBindingType": "NonTimeSeries",
+    "propertyBindings": [
+      {
+        "sourceColumnName": "Prescriber City",
+        "targetPropertyId": "2952986381394097086"
+      },
+      {
+        "sourceColumnName": "Prescriber City State",
+        "targetPropertyId": "2952986428637363773"
+      },
+      {
+        "sourceColumnName": "Prescriber State",
+        "targetPropertyId": "2952986477502545854"
+      }
+    ],
+    "sourceTableProperties": {
+      "sourceType": "LakehouseTable",
+      "workspaceId": "<<WORKSPACE_ID>>",
+      "itemId": "<<CMS_LAKEHOUSE_ID>>",
+      "sourceTableName": "cms_provider_dim_geography",
+      "sourceSchema": null
+    }
+  }
+}

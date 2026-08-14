@@ -1,0 +1,28 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/dataBinding/1.0.0/schema.json",
+  "id": "97da68bc-109d-424f-b4e1-973a6d596825",
+  "dataBindingConfiguration": {
+    "dataBindingType": "NonTimeSeries",
+    "propertyBindings": [
+      {
+        "sourceColumnName": "Prescriber Full Name",
+        "targetPropertyId": "2952986719232338529"
+      },
+      {
+        "sourceColumnName": "Prescriber NPI",
+        "targetPropertyId": "2952986764451963152"
+      },
+      {
+        "sourceColumnName": "Prescriber Type\t",
+        "targetPropertyId": "2952986810395033122"
+      }
+    ],
+    "sourceTableProperties": {
+      "sourceType": "LakehouseTable",
+      "workspaceId": "<<WORKSPACE_ID>>",
+      "itemId": "<<CMS_LAKEHOUSE_ID>>",
+      "sourceTableName": "cms_provider_dim_provider",
+      "sourceSchema": null
+    }
+  }
+}
