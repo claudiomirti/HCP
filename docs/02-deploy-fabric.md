@@ -28,7 +28,13 @@ Optional switches:
    and few-shot examples.
 
 The script is **name-idempotent**: re-running it updates existing items instead of creating
-duplicates, so it is safe to use for iterative deployments.
+duplicates, so it is safe to use for iterative deployments. The authoritative item name is
+the `displayName` inside each folder's `.platform` file.
+
+> **Order matters for `-IncludePreview`.** `GraphQL_1` resolves its schema at creation time,
+> so it only succeeds once the gold tables exist. Deploy the core items, run the pipeline,
+> then re-run with `-IncludePreview`. Failures there are reported as warnings and do not
+> abort the deployment.
 
 ## Token substitution
 

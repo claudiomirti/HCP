@@ -82,7 +82,7 @@ function Find-Item {
 
 # Builds the `definition.parts` payload from a folder on disk, applying token substitution.
 function New-DefinitionPayload {
-  param([string]$Folder, [hashtable]$Tokens)
+  param([string]$Folder, [hashtable]$Tokens, [string]$Format)
 
   $parts = @()
   foreach ($file in Get-ChildItem -Recurse -File $Folder) {
@@ -101,7 +101,12 @@ function New-DefinitionPayload {
 
     $parts += @{ path = $relative; payload = [Convert]::ToBase64String($bytes); payloadType = 'InlineBase64' }
   }
-  return @{ parts = $parts }
+
+  $definition = @{ parts = $parts }
+  # Notebooks stored as .ipynb must declare the format, otherwise Fabric tries to
+  # interpret the payload as a .py source file and fails with PyToIPynbFailure.
+  if ($Format) { $definition.format = $Format }
+  return $definition
 }
 
 function Deploy-Item {
@@ -113,10 +118,21 @@ function Deploy-Item {
     [string]$Description
   )
 
+  # `updateDefinition?updateMetadata=True` renames the item to the displayName inside
+  # its .platform file, so that name is authoritative. Using anything else would create
+  # a duplicate item on the next run.
+  $platform = if ($Folder) { Join-Path $Folder '.platform' } else { $null }
+  if ($platform -and (Test-Path $platform)) {
+    $platformName = (Get-Content $platform -Raw | ConvertFrom-Json).metadata.displayName
+    if ($platformName) { $DisplayName = $platformName }
+  }
+
   $items = Get-WorkspaceItems
   $existing = Find-Item -Type $Type -DisplayName $DisplayName -Items $items
 
-  $definition = if ($Folder) { New-DefinitionPayload -Folder $Folder -Tokens $Tokens } else { $null }
+  # Notebooks in this repo are exported in the Jupyter (.ipynb) format.
+  $format = if ($Type -eq 'Notebook') { 'ipynb' } else { $null }
+  $definition = if ($Folder) { New-DefinitionPayload -Folder $Folder -Tokens $Tokens -Format $format } else { $null }
 
   if ($existing) {
     Write-Host "  ~ updating $Type '$DisplayName'" -ForegroundColor DarkYellow
@@ -191,7 +207,7 @@ foreach ($name in $notebookNames.Keys | Sort-Object) {
 foreach ($extra in 'HCP-AI_Notebook', 'Notebook_1') {
   $folder = Join-Path $FabricPath "Notebook/$extra"
   if (Test-Path $folder) {
-    Deploy-Item -Type 'Notebook' -DisplayName ($extra -replace '_', ' ') -Folder $folder -Tokens $tokens | Out-Null
+    Deploy-Item -Type 'Notebook' -DisplayName $extra -Folder $folder -Tokens $tokens | Out-Null
   }
 }
 
@@ -232,6 +248,8 @@ foreach ($agent in 'hcp-agent', 'HCP-DataOneAgent') {
 # 7. Preview items -------------------------------------------------------------
 Write-Host "`n[7/7] Preview items" -ForegroundColor Cyan
 if ($IncludePreview) {
+  # GraphQL_1 resolves its schema at create time, so it only succeeds after the pipeline
+  # has produced the gold tables. It is deployed last and failures are non-fatal.
   $preview = @(
     @{ Type = 'SQLDatabase'; Name = 'hcp-sql'; Folder = 'SQLDatabase/hcp-sql' },
     @{ Type = 'Ontology'; Name = 'hcp_onto2'; Folder = 'Ontology/hcp_onto2' },

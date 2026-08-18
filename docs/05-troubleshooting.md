@@ -19,6 +19,31 @@ existing lakehouse.
 An item earlier in the dependency chain failed. Check the error above the warning, fix it,
 and re-run the script.
 
+**Notebook creation fails with `PyToIPynbFailure`**
+The notebook definition must declare `format: "ipynb"`. `deploy-fabric.ps1` does this
+automatically — if you call the REST API yourself, include it.
+
+**Semantic model fails with `TMDL Format Error ... control characters are not allowed in names`**
+A column display name contains a tab or newline. Fabric exports such names but refuses to
+import them. Find it with:
+
+```powershell
+Get-ChildItem -Recurse -Filter *.tmdl fabric/SemanticModel |
+  ForEach-Object { Select-String -Path $_.FullName -Pattern "'[^']*\t[^']*'" }
+```
+
+Remove the control character from the name — the `sourceColumn` binding underneath is
+unaffected, so no data or report reference breaks.
+
+**`GraphQL_1` fails with `DataSourceMetadataNotFoundKeyFieldsEmpty`**
+The GraphQL API resolves its schema when it is created, so the gold tables must already
+exist. Run the pipeline first, then re-run `deploy-fabric.ps1 -IncludePreview`.
+
+**Duplicate items appear after re-running the script**
+`updateDefinition?updateMetadata=True` renames an item to the `displayName` inside its
+`.platform` file. `deploy-fabric.ps1` therefore treats `.platform` as the authoritative name.
+If you add new items, keep the folder's `.platform` display name consistent.
+
 **Data agent creation fails**
 `DataAgent` requires the Copilot / Azure OpenAI tenant settings to be enabled and an F2+
 capacity in a supported region. The script warns and continues; create the agent manually in

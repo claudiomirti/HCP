@@ -59,7 +59,7 @@ table cms_provider_dim_provider
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Prescriber Type	'
+	column 'Prescriber Type'
 		dataType: string
 		sourceProviderType: varchar(8000)
 		lineageTag: 61ff3a14-3dee-412a-9e7e-6935de80bbb0
