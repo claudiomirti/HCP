@@ -17,9 +17,11 @@ services:
       - http://localhost:5173
     fabric:
       enabled: true
+  # The app reads Fabric data through the Power BI embed and the Data Agent REST
+  # API, not through the Rayfin data service. Leave this disabled: enabling it
+  # without a schema under rayfin/ makes `rayfin up` fail with TS18003.
   data:
-    enabled: true
-    dialect: mssql
+    enabled: false
   staticHosting:
     enabled: true
     folder: dist

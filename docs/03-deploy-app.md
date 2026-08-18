@@ -53,37 +53,45 @@ a **single-page application** redirect URI on the app registration.
 ```yaml
 services:
   auth:            # Entra ID sign-in, Fabric-aware
-  data:            # mssql-backed app database
+  data:            # disabled - the app talks to Fabric directly, not via Rayfin's DB
   staticHosting:   # serves ./dist, built with `npm run build`
 ```
 
-Deploy:
+Deploy, naming the target workspace explicitly on the first run:
 
 ```powershell
-npx rayfin up
+npx rayfin up --workspace-id <workspace-id>
 ```
 
-Rayfin creates the `hcp-app` item in your workspace, builds `dist/` and publishes it. Note
-the URL it prints, e.g. `https://<name>-<region>.webapp.fabricapps.net`.
+Rayfin records the target in `rayfin/.deployments.json` (git-ignored), so later runs can be
+just `npx rayfin up`. It creates the `hcp-app` item in your workspace, builds `dist/` and
+publishes it. Note the URL it prints, e.g. `https://<name>-<region>.webapp.fabricapps.net`.
 
 ## 4. Register the deployed URL
 
 Two places need the production URL:
 
-1. `app/rayfin/rayfin.yml`:
+1. `app/rayfin/rayfin.yml` — `rayfin up` appends the hosting URL to `allowedRedirectUris`
+   for you, so this is usually already done:
 
    ```yaml
    services:
      auth:
        allowedRedirectUris:
          - http://localhost:5173
-         - https://<name>-<region>.webapp.fabricapps.net   # <- add this
+         - https://<name>-<region>.webapp.fabricapps.net
    ```
 
-   Then run `npx rayfin up` again.
-
 2. Your Entra app registration → **Authentication → Single-page application** → add the same
-   URL as a redirect URI.
+   URL as a redirect URI. Rayfin cannot do this for you. From the CLI:
+
+   ```powershell
+   $oid = az ad app show --id <client-id> --query id -o tsv
+   '{"spa":{"redirectUris":["http://localhost:5173","https://<name>-<region>.webapp.fabricapps.net"]}}' |
+     Set-Content spa.json -Encoding utf8
+   az rest --method patch --url "https://graph.microsoft.com/v1.0/applications/$oid" `
+     --headers "Content-Type=application/json" --body "@spa.json"
+   ```
 
 ## 5. Regenerate Rayfin env values
 

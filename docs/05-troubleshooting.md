@@ -104,6 +104,26 @@ The delegated scope `DataAgent.Execute.All` is missing or not consented.
 **`npx rayfin up` fails on auth**
 Run `npx rayfin login` first, and make sure the workspace is on a Fabric capacity.
 
+**`No workspace targeting context`**
+The first non-interactive deploy has no recorded target. Pass it explicitly:
+
+```powershell
+npx rayfin up --workspace-id <workspace-id>
+```
+
+Rayfin then writes `rayfin/.deployments.json` (git-ignored) and later runs can omit the flag.
+
+**`error TS18003: No inputs were found in config file 'rayfin/tsconfig.json'`**
+Raised by the `rayfin up db apply` step when `services.data.enabled` is `true` but no
+TypeScript schema exists under `rayfin/`. This app does not use the Rayfin data service — it
+reads Fabric through the Power BI embed and the Data Agent REST API — so `rayfin.yml` ships
+with `data.enabled: false`. Only turn it back on once you add a schema file.
+
+**Sign-in works locally but not on the deployed URL**
+`rayfin up` appends the hosting URL to `allowedRedirectUris` in `rayfin.yml`, but it cannot
+edit your Entra app registration. Add the same `https://<name>-<region>.webapp.fabricapps.net`
+URL as a **single-page application** redirect URI there too.
+
 ## Keeping the repo in sync
 
 After editing items in the portal:
